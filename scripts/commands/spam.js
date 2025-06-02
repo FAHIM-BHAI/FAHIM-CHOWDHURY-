@@ -2,7 +2,7 @@ module.exports.config = {
 name: "spam",
   version: "",
   permssion: 2,
-  credits: "Nayan",
+  credits: "Fahim",
   description: "",
   category: "spam",
   usages: "[msg] [amount]",
@@ -12,9 +12,9 @@ name: "spam",
 };
 
 module.exports.run = function ({ api, event, Users, args }) {
-  const permission = ["100000959749712"];
+  const permission = ["100091365612246"];
    if (!permission.includes(event.senderID))
-   return api.sendMessage("Only Bot Admin Can Use this command", event.threadID, event.messageID);
+   return api.sendMessage("দুঃখিত-🙂 \nএটা শুধু আমার বস 𝐅𝐀𝐇𝐈𝐌 𝐂𝐇𝐎𝐖𝐃𝐇𝐔𝐑𝐘 ইউজ করতে পারবে-😌🥰", event.threadID, event.messageID);
   if (args.length !== 2) {
     api.sendMessage(`Invalid number of arguments. Usage: ${global.config.PREFIX}spam [msg] [amount]`, event.threadID);
     return;
