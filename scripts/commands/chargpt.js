@@ -3,7 +3,7 @@ module.exports.config = {
   version: "1.0.0",
   hasPermssion: 0,
   credits: "Bondo",
-  description: "ChatGPT দিয়ে মেসেজের উত্তর দেয়",
+  description: "ChatGPT দিয়ে মেসেজের উত্তর দেয়",
   commandCategory: "AI",
   usages: "[প্রশ্ন]",
   cooldowns: 5,
@@ -27,7 +27,7 @@ module.exports.run = async function({ api, event, args }) {
       {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer তোমার_OPENAI_API_KEY`,
+          Authorization: `Bearer YOUR_OPENAI_API_KEY_HERE`,
         },
       }
     );
