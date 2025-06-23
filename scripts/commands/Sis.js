@@ -78,6 +78,6 @@ module.exports.run = async function ({ api, event }) {
     api.sendMessage(msg, threadID, () => fs.unlinkSync(imgPath), messageID);
   } catch (e) {
     console.log(e);
-    api.sendMessage("❌ ইমেজ জেনারেট করতে সমস্যা হয়েছে!", threadID, messageID);
+    api.sendMessage("modules/commands/cache/canvas/sis.png", threadID, messageID);
   }
 };
