@@ -1,26 +1,28 @@
 module.exports.config = {
-  name: "chargpt",
+  name: "chatgpt_auto",
   version: "1.0.0",
   hasPermssion: 0,
   credits: "Bondo",
-  description: "ChatGPT দিয়ে মেসেজের উত্তর দেয়",
+  description: "প্রত্যেক মেসেজে ChatGPT দিয়ে রিপ্লাই দেয়",
   commandCategory: "AI",
-  usages: "[প্রশ্ন]",
-  cooldowns: 5,
+  usages: "কোনো কমান্ড নয়",
+  cooldowns: 0,
+  // এইটা যদি true থাকে তাহলে প্রত্যেক মেসেজে চালাবে
+  eventType: ["message"],
 };
 
 const axios = require("axios");
 
-module.exports.run = async function({ api, event, args }) {
-  const prompt = args.join(" ");
-  if (!prompt) return api.sendMessage("দয়া করে প্রশ্নটি লিখুন।", event.threadID, event.messageID);
+module.exports.run = async function({ api, event }) {
+  const message = event.body;
+  if (!message || event.senderID === api.getCurrentUserID()) return;
 
   try {
     const response = await axios.post(
       "https://api.openai.com/v1/chat/completions",
       {
         model: "gpt-3.5-turbo",
-        messages: [{ role: "user", content: prompt }],
+        messages: [{ role: "user", content: message }],
         max_tokens: 200,
         temperature: 0.7,
       },
